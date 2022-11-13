@@ -322,13 +322,7 @@ class PremierLeagueScraper:
 
 
     def save_data(self, match_id, raw_stats):
-        '''
-        Saves the dictionary of information into a new directory named after the club and a sub-directory after the match ID.
-        Args:
-            match_id (int): The unique ID of each match.
-            raw_stats (dict): The unique dictionary with all the information needed from the match.
-        '''
-        path = f'raw_data/{self.club}/{match_id}'
+        path = f'match_data/{match_id}'
         if not os.path.exists(path):
             os.makedirs(path)
         json_str = json.dumps(raw_stats)
