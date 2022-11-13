@@ -228,7 +228,7 @@ class Scraper:
 
 
     def save_data(self, match_id, raw_stats):
-        path = f'match_data/{match_id}'
+        path = f'raw_data/{match_id}'
         if not os.path.exists(path):
             os.makedirs(path)
         json_str = json.dumps(raw_stats)
