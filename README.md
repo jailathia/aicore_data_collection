@@ -19,5 +19,36 @@ fixture_list = self.driver.find_element(By.XPATH, '//*[@class="fixtures"]')
         home_games = fixture_list.find_elements(By.XPATH, '//*[@data-home="Man Utd"]')
         away_games = fixture_list.find_elements(By.XPATH, '//*[@data-away="Man Utd"]')
 ```
+## Milestone 4: Retrieve data from details page
 
+A method was created to scrape the statistics of each game.
 
+All data is to be stored locally in the folder "raw_data" as .json files.
+
+For each game a number of statistics were considered, including the goals scored, possession and cards given throughout the game amongst many others.
+
+By using a method to create a dictionary this data could be stored in the following way:
+
+```python
+stats_dictionary = {'Match ID': match_id,
+                                'V4 UUID': str(self.generate_uuid()),
+                                'Date': date,
+                                'Location': location,
+                                'Home or Away': home_or_away,
+                                'Result': result[2],
+                                'Goals scored': result[0],
+                                'Goals against': result[1],
+                                'Possession': float(stat_list[0][0]),
+                                'Shots on target': int(stat_list[1][0]),
+                                'Shots': int(stat_list[2][0]),
+                                'Touches': int(stat_list[3][0]),
+                                'Passes': int(stat_list[4][0]),
+                                'Tackles': int(stat_list[5][0]),
+                                'Clearances': int(stat_list[6][0]),
+                                'Corners': int(stat_list[7][0]),
+                                'Offsides': int(stat_list[8][0]),
+                                'Fouls conceeded': int(stat_list[-1][0])}
+```
+The resulting extracted data shows up ass follows in the raw_data folder - each containing a .json file.
+
+![raw_data folder image](readme_images/raw_data.png)
